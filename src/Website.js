@@ -9,9 +9,11 @@ export function Sample() {
         const dt = await fetch(`http://localhost:4000/${url}`);
         const val = await dt.json()
         window.location.href = val.longurl;
+        console.log("Api call going");
 
     };
     useEffect(() => getUrl, []);
+    console.log(url, "Iam ruuning");
 
     return (
 
