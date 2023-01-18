@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Urlshortner />} />
-          <Route path="/hoooc" element={<Website />}>
+          <Route path="/sample" element={<Website />}>
 
 
           </Route>
@@ -22,4 +22,9 @@ function App() {
   );
 }
 {/* */ }
+function Sample() {
+  return (
+    <h1>Iam Sample</h1>
+  )
+}
 export default App;
