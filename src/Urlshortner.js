@@ -2,6 +2,8 @@ import TextField from '@mui/material/TextField';
 import { Urls } from './Urls';
 import Button from '@mui/material/Button';
 import { useEffect, useState } from 'react';
+import { port } from './port';
+
 export function Urlshortner() {
 
     const [input, setinput] = useState(true)
@@ -9,7 +11,7 @@ export function Urlshortner() {
 
     const getUrl = async () => {
 
-        const data = await fetch("http://localhost:4000/all/urls").then(val => val.json()).then(dt => seturl(dt))
+        const data = await fetch(`${port}all/urls`).then(val => val.json()).then(dt => seturl(dt))
     }
 
     useEffect(() => {
@@ -20,7 +22,7 @@ export function Urlshortner() {
     const submitUrl = async (e) => {
         e.preventDefault()
 
-        const data = await fetch("http://localhost:4000/shorturl", {
+        const data = await fetch(`${port}shorturl`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',

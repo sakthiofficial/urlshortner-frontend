@@ -1,9 +1,10 @@
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { port } from './port';
 export function Urls({ prop, getUrl }) {
     const { longurl, shorturl } = prop
     async function deleteUrl(url) {
-        const data = await fetch("http://localhost:4000/deleteurl", {
+        const data = await fetch(`${port}deleteurl`, {
             method: "DELETE",
             headers: {
                 'Accept': 'application/json',
