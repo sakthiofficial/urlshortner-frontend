@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import { Urlshortner } from './Urlshortner';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { Website } from './Website';
+import { useEffect, useState } from 'react';
 function App() {
   return (
     <div className="App">
@@ -10,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Urlshortner />} />
-          <Route path="/sample" element={<Sample />}>
+          <Route path="/:url" element={<Sample />}>
 
 
           </Route>
@@ -23,6 +24,17 @@ function App() {
 }
 {/* */ }
 function Sample() {
+  const { url } = useParams();
+  const [longurl, setlongurl] = useState("");
+  const getUrl = async () => {
+    const dt = await fetch(`http://localhost:4000/${url}`);
+    const val = await dt.json()
+    setlongurl(val.longurl)
+  };
+  useEffect(() => getUrl, []);
+  window.location.href = longurl;
+  console.log(longurl);
+  console.log(url);
   return (
     <h1>Iam Sample</h1>
   )
