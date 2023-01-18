@@ -12,7 +12,9 @@ export function Sample() {
         console.log("Api call going");
 
     };
-    useEffect(() => getUrl, []);
+    useEffect(() => {
+        getUrl()
+    }, []);
     console.log(url, "Iam ruuning");
 
     return (
