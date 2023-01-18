@@ -23,7 +23,7 @@ export function Urls({ prop, getUrl }) {
             <div className="content">
                 <div className="short_url">
                     <p>Shorted Url</p>
-                    <a href={shorturl} target="_blank" rel="noopener noreferrer">https://localhost:400/{shorturl}</a><br />
+                    <a href={shorturl} target="_blank" rel="noopener noreferrer">https://master--resonant-cannoli-ac3ee3.netlify.app/{shorturl}</a><br />
 
                 </div>
                 <div className="long_url">
