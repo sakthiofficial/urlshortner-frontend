@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Urlshortner />} />
-          <Route path="/:url" element={<Website />}>
+          <Route path="/hoooc" element={<Website />}>
 
 
           </Route>
