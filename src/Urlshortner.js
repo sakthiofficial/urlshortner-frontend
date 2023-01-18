@@ -12,8 +12,9 @@ export function Urlshortner() {
         const data = await fetch("http://localhost:4000/all/urls").then(val => val.json()).then(dt => seturl(dt))
     }
 
-    getUrl()
-
+    useEffect(() => {
+        getUrl()
+    }, [])
 
 
     const submitUrl = async (e) => {
