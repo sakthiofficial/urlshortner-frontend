@@ -3,10 +3,13 @@ import { Urls } from './Urls';
 import Button from '@mui/material/Button';
 import { useEffect, useState } from 'react';
 import { port } from './port';
+import RotateRightIcon from '@mui/icons-material/RotateRight';
+
 
 export function Urlshortner() {
 
     const [input, setinput] = useState(true)
+    const [btn, setbtn] = useState(false)
     const [url, seturl] = useState([])
 
     const getUrl = async () => {
@@ -20,7 +23,14 @@ export function Urlshortner() {
 
 
     const submitUrl = async (e) => {
+        setbtn(true)
         e.preventDefault()
+        if (e.target[0].value.length <= 8) {
+            setinput(false)
+            setbtn(false)
+
+            return;
+        }
 
         const data = await fetch(`${port}shorturl`, {
             method: "POST",
@@ -35,9 +45,12 @@ export function Urlshortner() {
             setinput(true)
             getUrl()
             e.target[0].value = ""
+            setbtn(false)
 
         } else {
             setinput(false)
+            setbtn(false)
+
         }
     }
     return (
@@ -48,8 +61,8 @@ export function Urlshortner() {
             </div>
             <div className="urlshortner">
                 <form onSubmit={(e) => submitUrl(e)}>
-                    <TextField id="outlined-basic" color={input ? "primary" : "error"} label={input ? "Paste your url here" : "Already Shorted Url"} variant="outlined" />
-                    <Button type="submit" variant="contained">Submit </Button>
+                    <TextField id="outlined-basic" color={input ? "primary" : "error"} label={input ? "Paste your url here" : "Something Wrong"} variant="outlined" />
+                    <Button type="submit" variant="contained">{btn ? <RotateRightIcon className='btn-spiner' /> : "Submit"} </Button>
                 </form>
                 <div className="allurl">
 
